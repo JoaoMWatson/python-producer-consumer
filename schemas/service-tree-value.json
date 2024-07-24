@@ -1,0 +1,95 @@
+{
+	"name": "ServiceTreeValue",
+	"connect.name": "br.com.cogna.ServiceTreeValue",
+	"doc": "{\"description\":\"Este evento representa a geração da arvore de atendimento.\",\"topic\":\"service-tree\",\"author_team\":\"Backbone\",\"author_name\":\"João Pedro Martins Watson\",\"author_email\":\"integracao.sistemas@kroton.com.br\",\"support_email\":\"integracao.sistemas@kroton.com.br\",\"schema_context\":\"br.com.cogna\"}",
+	"namespace": "br.com.cogna",
+	"type": "record",
+	"fields": [
+		{
+			"name": "system",
+			"doc": "Sistema que produziu a mensagem",
+			"type": "string"
+		},
+		{
+			"name": "businessKey",
+			"doc": "Chave de negocio para arvore de atendimento",
+			"type": "string"
+		},
+		{
+			"name": "description",
+			"doc": "Descrição do atendimento",
+			"type": "string"
+		},
+		{
+			"name": "portalList",
+			"doc": "Lista de portais",
+			"type": {
+				"name": "portalList_ServiceTree",
+				"doc": "Lista de portais para atendimento",
+				"type": "array",
+				"items": {
+					"name": "name",
+					"doc": "Nome do portal",
+					"type": "string"
+				}
+			}
+		},
+		{
+			"name": "serviceTypeList",
+			"doc": "Lista de tipos de solicitação",
+			"type": {
+				"name": "serviceTypeList_ServiceTree",
+				"doc": "Array de tipos de solicitação",
+				"type": "array",
+				"items": {
+					"name": "serviceType_ServiceTree",
+					"type": "enum",
+					"symbols": [
+						"INFORMACAO",
+						"RECLAMACAO",
+						"SOLICITACAO"
+					]
+				}
+			}
+		},
+		{
+			"name": "academicLevelList",
+			"doc": "Lista de nível escolar",
+			"type": {
+				"name": "academicLevelList_ServiceTree",
+				"doc": "Array de nível escolar",
+				"type": "array",
+				"items": {
+					"name": "academicLevel_ServiceTree",
+					"type": "enum",
+					"symbols": [
+						"GRADUACAO",
+						"STRICTO_SENSU",
+						"EXTENSAO",
+						"CURSOS_LIVRES",
+						"EJA",
+						"CURSO_TECNICO",
+						"LATO_SENSU",
+						"DISCIPLINA_ISOLADA",
+						"POS_GRADUACAO"
+					]
+				}
+			}
+		},
+		{
+			"name": "createdAt",
+			"doc": "Timestamp Unix epoch da criação da arvore de atendimento",
+			"type": {
+				"type": "long",
+				"connect.version": 1,
+				"connect.name": "org.apache.kafka.connect.data.Timestamp",
+				"logicalType": "timestamp-millis"
+			}
+		},
+		{
+			"name": "overdueStudentAccepted",
+			"doc": "Aceitar estudante inadimplente?",
+			"type": "boolean"
+		}
+	]
+}

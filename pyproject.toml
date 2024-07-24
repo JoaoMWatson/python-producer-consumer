@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "simple-consumer-producer"
+version = "0.1.0"
+description = ""
+authors = ["João Pedro Watson <joaopedrowatson>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+confluent-kafka = "^2.5.0"
+avro = "^1.11.3"
+dynaconf = "^3.2.5"
+
+
+[tool.poetry.group.dev.dependencies]
+blue = "^0.9.1"
+isort = "^5.13.2"
+mypy = "^1.10.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
