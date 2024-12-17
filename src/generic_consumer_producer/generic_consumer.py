@@ -6,21 +6,15 @@ from confluent_kafka.serialization import MessageField, SerializationContext
 
 from config import settings
 
+
 class GenericKafkaConsumer:
-    def __init__(
-        self,
-        topic,
-        env,
-        offset='earliest'
-    ):
+    def __init__(self, env, offset='earliest'):
         """Consumer class
 
         Args:
-            topic (str): Destiny topic
             env (str): Environment how gonna be consumed
             offset (str): Offset config, earliest/latest
         """
-        self.topic = topic
         self.env = env
         self.offset = offset
         self._secrets = ''
@@ -65,11 +59,11 @@ class GenericKafkaConsumer:
 
         return message_decoded
 
-    def listener(self):
+    def listener(self, topic):
         consumer_config = self._create_config('consumer')
 
         consumer = Consumer(consumer_config)
-        consumer.subscribe([self.topic])
+        consumer.subscribe([topic])
 
         try:
             running = True
@@ -87,11 +81,10 @@ class GenericKafkaConsumer:
 
         except ConsumeError as e:
             print(f'\nCONSUMER - Error while consume: {e}')
-        
+
         except ValueError as e:
             print(f'\nCONSUMER - Error while decode: {e.with_traceback}')
 
         finally:
             print('Closing consumer')
             consumer.close()
-

@@ -6,4 +6,3 @@ from confluent_kafka.serialization import (
     SerializationContext,
     StringSerializer,
 )
-

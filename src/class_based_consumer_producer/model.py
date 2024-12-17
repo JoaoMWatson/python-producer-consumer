@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class ServiceTree(object):
     """Classe modelo para schema service-tree"""
 
@@ -38,12 +39,12 @@ class ServiceTree(object):
     def to_dict(self):
         """Converte a classe para um dicionário"""
         return dict(
-            system = self.system,
-            businessKey = self.businessKey,
-            description = self.description,
-            portalList = self.portalList,
-            serviceTypeList = self.serviceTypeList,
-            academicLevelList = self.academicLevelList,
-            createdAt = self.createdAt,
-            overdueStudentAccepted = self.overdueStudentAccepted,
+            system=self.system,
+            businessKey=self.businessKey,
+            description=self.description,
+            portalList=self.portalList,
+            serviceTypeList=self.serviceTypeList,
+            academicLevelList=self.academicLevelList,
+            createdAt=self.createdAt,
+            overdueStudentAccepted=self.overdueStudentAccepted,
         )
